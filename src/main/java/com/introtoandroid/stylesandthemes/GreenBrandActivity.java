@@ -1,8 +1,8 @@
 package com.introtoandroid.stylesandthemes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,17 +12,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class DefaultBrandActivity extends AppCompatActivity {
+public class GreenBrandActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_styles_and_themes);
+    setContentView(R.layout.activity_green_brand);
 
     Toolbar actionBar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(actionBar);
 
-    EditText editText = (EditText)findViewById(R.id.editText);
+    ActionBar ab = getSupportActionBar();
+    assert ab != null;
+    ab.setDisplayHomeAsUpEnabled(true);
+
+    EditText editText = (EditText) findViewById(R.id.editText);
     editText.setSelection(editText.getText().length());
 
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -83,12 +87,10 @@ public class DefaultBrandActivity extends AppCompatActivity {
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_green) {
-      Intent intent = new Intent(this, GreenBrandActivity.class);
-      startActivity(intent);
+      Toast.makeText(this, "Green", Toast.LENGTH_SHORT).show();
       return true;
     } else if (id == R.id.action_orange) {
-      Intent intent = new Intent(this, OrangeBrandActivity.class);
-      startActivity(intent);
+      Toast.makeText(this, "Orange", Toast.LENGTH_SHORT).show();
       return true;
     }
 
